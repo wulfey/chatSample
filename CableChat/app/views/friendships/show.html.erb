@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+
+<% if @friendship.user_id == current_user.id%>
+  <p>
+    <strong>User:</strong>
+    <%= @friendship.user_id %>
+  </p>
+
+  <p>
+    <strong>Friend:</strong>
+    <%= @friendship.friend_id %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_friendship_path(@friendship) %> |
+<%= link_to 'Back', friendships_path %>

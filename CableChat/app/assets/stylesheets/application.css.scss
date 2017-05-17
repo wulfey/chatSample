@@ -1,127 +1,333 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
 
-$navbar-default-bg: black;
+
+ // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+ // @import "bootstrap-sprockets";
+
+ @import "bootstrap";
+ @import "font-awesome";
+ // @import "bootstrap-sprockets";
+ //
+ // @import "bootstrap";
+ // @import "font-awesome-sprockets";
+ // @import "font-awesome";
 
 
 
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-// @import "bootstrap-sprockets";
-@import "bootstrap";
 
-#logo {
-    float: left;
-    font-size: 1.7em;
-    color: #fff;
-    letter-spacing: -1px;
-    font-weight: bold;
-}
+  $navbar-default-bg: black;
 
-#logo:hover {
-    color: #0ff;
-    text-decoration: bold
-}
 
-.center {
-    text-align: center;
 
-}
+ .user-name {
 
-.jumbotron {
-    background-image: asset-url('WarCon.png');
-    background-size: cover;
-    height: 450px;
-}
+ padding: 0 !important ;
 
-.jumbotron h1 {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: -1px;
-    font-weight: bold;
-}
+ padding-left: 5px;
 
-.btn btn-primary btn-lg {
-    float: left;
-}
+ padding-top: 15px !important;
 
-.btn-xlarge {
-    font-size: 1.7em;
-    background-color: black;
-    float: left;
+ text-align: center;
 
-}
+ a {
 
-.article-meta-details {
-    border-top: 1px solid #eaeaea;
-    margin-top: 15px;
-}
+ color: #fff !important;
 
-.article-actions {
-    border-top: 1px solid #eaeaea;
-    padding-top: 5px;
+ margin: 0 !important;
 
-}
+ padding: 5px!important;
 
-.description {
-    margin-top: 0;
-}
+ }
 
-.article-title {
-    font-weight: bold;
-    font-size: 1.5em;
-}
+ a:hover, a:focus {
 
-.article-body {
-    border-top: 1px solid #eaeaea;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
+ color: #000 !important;
 
-.listing {
-    list-style: none;
-    padding-left: 0;
-}
+ }
 
-.badge {
-    background-color: #CEF6F5;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    font-weight: bold;
-}
+ }
 
-.input_checkbox input {
-    width: auto !important;
-}
+ .nav.navbar-right {
 
-footer {
-    margin-top: 45px;
-    padding-top: 5px;
-    border-top: 1px solid #eaeaea;
-    color: #777;
-}
+ padding-bottom: 10px;
 
-.footer a:hover {
-    color: #222;
-}
+ padding-top: 5px;
 
-footer small {
-    float: left;
-}
+ }
 
-footer ul {
-    float: right;
-    list-style: none;
-}
+ .nav.navbar-nav {
 
-footer ul li {
-    float: left;
-    margin-left: 20px;
-    margin-right: 5px;
-}
+ .navbar-link {
 
-#messages {
-  max-height: 450px;
-  overflow-y: auto;
-  .avatar {
-    margin: 0.5rem;
-  }
-}
+ border-radius: 5px;
+
+ color: #fff;
+
+ margin-top: 15px;
+
+ padding: 8px;
+
+ }
+
+ .navbar-link:focus, .navbar-link:hover {
+
+ background: #3071a9;
+
+ color: #fff;
+
+ }
+
+ li a {
+
+ margin-right: 5px;
+
+ }
+
+ }
+
+ .nav.navbar-right li {
+
+ .btn {
+
+ color: #fff !important;
+
+ margin-top: 5%;
+
+ }
+
+ .btn-danger:hover, .btn-danger:focus {
+
+ background-color: darken(#d9534f,20%) !important;
+
+ }
+
+ .btn-primary:hover, .btn-primary:focus {
+
+ background-color: darken(#428bca,20%) !important;
+
+ }
+
+ }
+
+ .btn-primary:visited, .btn-danger:visited {
+
+ color: #fff;
+
+ }
+
+ .features {
+
+ ul {
+
+ margin-left: 0;
+
+ padding-left: 15px;
+
+ }
+
+ }
+
+ .jumbotron {
+
+ background-image: asset-url('meeting1.png');
+
+ background-size: cover;
+
+ color: #fff;
+
+ font-family: 'Helvetica Neue' !important;
+
+ font-stretch: expanded;
+
+ padding-top: 115px;
+
+ padding-bottom: 115px;
+
+ margin-left: 15px;
+
+ margin-right: 15px;
+
+ text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+
+ h2 {
+
+ font-size: 35px !important;
+
+ .lead {
+
+ font-family: 'Helvetica Neue' !important;
+
+ font-size: 30px !important;
+
+ }
+
+ }
+
+ }
+
+ .plan {
+
+ border: 1px solid #e7e7e7;
+
+ border-radius: 5px;
+
+ margin-right: 5px;
+
+ }
+
+ .price {
+
+ font-weight: 700;
+
+ size: 120%;
+
+ }
+
+ .sign-up {
+
+ margin-top: 5px;
+
+ }
+
+ .extra {
+
+ color: #5cb85c;
+
+ }
+
+
+
+ .no-side-padding {
+
+ padding-left: 0;
+
+ padding-right: 0;
+
+ }
+
+ .no-left-padding {
+
+ padding-left: 0 !important;
+
+ }
+
+ .no-right-padding {
+
+ padding-right: 0 !important;
+
+ }
+
+
+ .table tr td {
+
+ a.main-link {
+
+ color: #428bca;
+
+ }
+
+
+
+ a.main-link:hover {
+
+ background: none;
+
+ }
+
+ }
+
+ .fa.fa-cog {
+
+ background: #fff;
+
+ border: 1px solid red;
+
+ border-radius: 20px;
+
+ color: #000;
+
+ padding: 10px;
+
+ }
+
+ .logout {
+
+ padding-left: 0;
+
+ }
+
+ .navbar.navbar-static-top {
+
+ background: #000;
+
+ color: #fff !important;
+
+ padding-bottom: 5px;
+
+ padding-top: 5px;
+
+ }
+
+
+ /* The side navigation menu */
+ .sidenav {
+     height: 100%; /* 100% Full-height */
+     width: 0; /* 0 width - change this with JavaScript */
+     position: fixed; /* Stay in place */
+     z-index: 1; /* Stay on top */
+     top: 0;
+     left: 0;
+     background-color: #111; /* Black*/
+     overflow-x: hidden; /* Disable horizontal scroll */
+     padding-top: 100px; /* Place content 60px from the top */
+     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+ }
+
+ /* The navigation menu links */
+ .sidenav a {
+     padding: 8px 8px 8px 32px;
+     text-decoration: none;
+     font-size: 25px;
+     color: #818181;
+     display: block;
+     transition: 0.3s
+ }
+
+ /* When you mouse over the navigation links, change their color */
+ .sidenav a:hover, .offcanvas a:focus{
+     color: #f1f1f1;
+ }
+
+ /* Position and style the close button (top right corner) */
+ .sidenav .closebtn {
+     position: absolute;
+     top: 65px;
+     right: 25px;
+     font-size: 36px;
+     margin-left: 50px;
+     color: white;
+ }
+
+ /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+ #main {
+     transition: margin-left .5s;
+     padding: 20px;
+ }
+
+ /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+ @media screen and (max-height: 450px) {
+     .sidenav {padding-top: 15px;}
+     .sidenav a {font-size: 18px;}
+ }
