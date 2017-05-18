@@ -11,17 +11,35 @@ class ChatRoomsController < ApplicationController
     @chat_room = current_user.chat_rooms.build(chat_room_params)
     if @chat_room.save
       flash[:success] = 'Chat room created!'
-      redirect_to chat_rooms_path
+      redirect_to request.referer
     else
       render 'new'
     end
   end
 
+
+  def subscribed
+    @subscribed = current_user.chat_rooms
+  end
+
   def add
     @chat_room = ChatRoom.find_by(params[:id])
-    current_user.chat_rooms << @chat_room
-    flash[:success] = 'Chat room added to user rooms!'
-    redirect_to chat_rooms_path
+    if current_user.chat_rooms.include?(@chat_room)
+      flash[:failure] = 'Already subscribed'
+    else
+      current_user.chat_rooms << @chat_room
+      current_user.save
+      flash[:success] = 'Chat room added to subscribed rooms.'
+    end
+    redirect_to request.referer
+  end
+
+  def unsubscribe
+    @chat_room = ChatRoom.find_by(params[:id])
+    current_user.chat_rooms.delete(@chat_room)
+    @chat_room.save
+    flash[:success] = 'Chat room removed!'
+    redirect_to request.referer
   end
 
   def show

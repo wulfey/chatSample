@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
 
+
   # def current_user
   #   # return this user if session:user_id exists in the session hash based on said user_id
   #   # gives the whole user object from the session hash

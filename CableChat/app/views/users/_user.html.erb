@@ -14,8 +14,18 @@
             <%= user.email  %>
           </li>
           <li>
-            <%= link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post %>
+
+
+            <% if current_user.friendships.find_by(friend_id: user.id) != nil %>
+              <%= link_to 'Remove', friendship_path(current_user.friendships.find_by(friend_id: user.id)), method: :delete %>
+            <% else %>
+              <%= link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post %>
+            <% end %>
+
           </li>
+
+
+
 
 
         </p>

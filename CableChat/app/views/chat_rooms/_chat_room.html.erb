@@ -1,2 +1,6 @@
 <li><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></li>
-<%= link_to "Subscribe", subscribe_path(chat_room.id), :method => :post %>
+<% if current_user.chat_rooms.include?(chat_room) %>
+  <%= link_to "Unsubscribe", unsubscribe_path(chat_room.id), :method => :post %>
+<% else %>
+  <%= link_to "Subscribe", subscribe_path(chat_room.id), :method => :post %>
+<% end %>

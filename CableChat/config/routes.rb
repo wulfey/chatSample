@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :chat_rooms, only: [:new, :create, :show, :index]
   post 'subscribe', to: 'chat_rooms#add'
+  post 'unsubscribe', to: 'chat_rooms#unsubscribe'
+  get 'subscribed', to: 'chat_rooms#subscribed'
+  post 'deletefriend', to: 'friendships#destroy'
 
   root 'chat_rooms#index'
   mount ActionCable.server => '/cable'
