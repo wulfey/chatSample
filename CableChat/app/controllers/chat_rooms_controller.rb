@@ -23,23 +23,26 @@ class ChatRoomsController < ApplicationController
   end
 
   def add
-    @chat_room = ChatRoom.find_by(params[:id])
+    @chat_room = ChatRoom.find_by(id: params[:id])
     if current_user.chat_rooms.include?(@chat_room)
       flash[:failure] = 'Already subscribed'
+    elsif @chat_room == nil
+      flash[:failure] = 'Error nil room'
     else
       current_user.chat_rooms << @chat_room
       current_user.save
       flash[:success] = 'Chat room added to subscribed rooms.'
     end
-    redirect_to request.referer
+    redirect_back(fallback_location: root_path)
   end
 
   def unsubscribe
-    @chat_room = ChatRoom.find_by(params[:id])
+
+    @chat_room = ChatRoom.find_by(id: params[:id])
     current_user.chat_rooms.delete(@chat_room)
-    @chat_room.save
+    current_user.save
     flash[:success] = 'Chat room removed!'
-    redirect_to request.referer
+    redirect_back(fallback_location: root_path)
   end
 
   def show
@@ -50,6 +53,6 @@ class ChatRoomsController < ApplicationController
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:title)
+    params.require(:chat_room).permit(:title, :id)
   end
 end

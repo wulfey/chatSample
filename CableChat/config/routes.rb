@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :chat_rooms, only: [:new, :create, :show, :index]
-  post 'subscribe', to: 'chat_rooms#add'
-  post 'unsubscribe', to: 'chat_rooms#unsubscribe'
+  get 'subscribe', to: 'chat_rooms#add'
+  get 'unsubscribe', to: 'chat_rooms#unsubscribe'
   get 'subscribed', to: 'chat_rooms#subscribed'
   post 'deletefriend', to: 'friendships#destroy'
 

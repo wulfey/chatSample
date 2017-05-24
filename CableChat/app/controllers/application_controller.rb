@@ -1,8 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
 
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:display_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:display_name])
+
+
+
+  end
   # def current_user
   #   # return this user if session:user_id exists in the session hash based on said user_id
   #   # gives the whole user object from the session hash

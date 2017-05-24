@@ -20,4 +20,4 @@ $("#addClass").click(function () {
           $("#removeClass").click(function () {
         $('#qnimate').removeClass('popup-box-on');
           });
-});
+})
