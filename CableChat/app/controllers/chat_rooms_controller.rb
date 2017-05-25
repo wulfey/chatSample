@@ -11,10 +11,11 @@ class ChatRoomsController < ApplicationController
     @chat_room = current_user.chat_rooms.build(chat_room_params)
     if @chat_room.save
       flash[:success] = 'Chat room created!'
-      redirect_to request.referer
+
     else
       render 'new'
     end
+    redirect_back(fallback_location: root_path)
   end
 
 
