@@ -1,38 +1,34 @@
 <h1><%= @chat_room.title %></h1>
 
-<div id="messages" data-chat-room-id="<%= @chat_room.id %>">
-  <%= render @chat_room.messages %>
-</div>
 
+
+<!--  this is old enter chat -->
 <%= form_for @message, url: '#' do |f| %>
-  <div class="form-group">
+  <div class="form-group"  class="col-sm-8">
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control' %>
     <small class="text-muted">From 2 to 1000 characters</small>
   </div>
-
   <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
 <% end %>
 
 
+
+<!-- this is the messages  -->
+<!-- only 1 stream allowed apparently -->
+
 <div class="container">
-    <div class="row">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Title</h3>
-                <span class="pull-right">
-                    <ul class="nav panel-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Tab 1</a></li>
-                    </ul>
-                </span>
-            </div>
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="test">
-                        <%= render @chat_room.messages %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div id="messages" data-chat-room-id="<%= @chat_room.id %>" class="col-sm-8">
+    <%= render @chat_room.messages.reverse %>
+  </div>
+  <div  div class="col-sm-4">
+      <h3> subscribed users </h3>
+      <ul>
+        <% SubscribedChat.where(chat_room_id: @chat_room.id).each do |ss|   %>
+        <li>
+          <%= User.find_by(id: ss.user_id).display_name %>
+        </li>
+        <% end %>
+      </ul>
+  </div>
 </div>

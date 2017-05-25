@@ -37,7 +37,6 @@ class ChatRoomsController < ApplicationController
   end
 
   def unsubscribe
-
     @chat_room = ChatRoom.find_by(id: params[:id])
     current_user.chat_rooms.delete(@chat_room)
     current_user.save
