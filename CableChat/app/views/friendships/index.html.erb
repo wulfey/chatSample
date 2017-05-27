@@ -15,8 +15,14 @@
     <% @friendships.each do |friendship| %>
       <% if friendship.user_id == current_user.id && friendship.friend_id != current_user.id %>
         <tr>
-          <td><%= User.find(friendship.friend_id).email %></td>
-          <td><%= link_to 'Remove', friendship, method: :delete %></td>
+          <td>
+            <% if User.find(friendship.friend_id).display_name == nil %>
+              <%= "Missing Display Name"  %>
+            <% else %>
+              <%= User.find(friendship.friend_id).display_name  %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Remove', friendship, method: :delete, class: 'btn btn-xs btn-danger'%></td>
         </tr>
       <% end %>
     <% end %>
@@ -25,4 +31,4 @@
 
 <br>
 
-<a href="#"><%= link_to('Users', users_path, class: 'btn btn-xs btn-danger', title: 'Users')%></a>
+<a href="#"><%= link_to('Users Listing', users_path, class: 'btn btn-xs btn-primary', title: 'Users')%></a>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'unsubscribe', to: 'chat_rooms#unsubscribe'
   get 'subscribed', to: 'chat_rooms#subscribed'
   post 'deletefriend', to: 'friendships#destroy'
+  delete 'deletechat', to: 'chat_rooms#destroy'
 
   root 'chat_rooms#index'
   mount ActionCable.server => '/cable'

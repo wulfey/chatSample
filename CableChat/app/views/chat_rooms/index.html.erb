@@ -1,6 +1,44 @@
 
-<h1>Chat rooms</h1>
+
 
 <p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
 
-<%= render @chat_rooms %>
+<!--  giant container for left and right-->
+<div class="container">
+
+  <!-- left, chats to join -->
+  <div class="col-sm-4">
+    <h2>Chat rooms</h2>
+    <%= render @chat_rooms %>
+  </div>
+
+  <!-- right, feed -->
+  <div class="col-sm-8">
+    <h2>Feed</h2>
+    <% @messages.reverse.each do |message| %>
+
+      <div class="card">
+        <div class="card-block">
+          <div class="row">
+            <div class="col-md-1">
+              <%= gravatar_for message.user %>
+            </div>
+            <div class="col-md-11">
+              <p class="card-text">
+                <span class="text-muted"><%= message.user.display_name %> at <%= message.timestamp %> says</span><br>
+                <%= message.body %>
+              </p>
+            </div>
+            <div class="col-md-13">
+              <%= render ChatRoom.find_by(id: message.chat_room_id) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <% end %>
+
+
+  </div>
+</div>

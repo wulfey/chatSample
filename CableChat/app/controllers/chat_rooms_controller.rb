@@ -1,6 +1,15 @@
 class ChatRoomsController < ApplicationController
   def index
     @chat_rooms = ChatRoom.all
+    mes = []
+    current_user.chat_rooms.each do |room|
+      room.messages.each do |message|
+        mes << message
+      end
+    end
+
+    @messages = mes.sort {|a,b| a.created_at <=> b.created_at}
+
   end
 
   def new
@@ -9,13 +18,13 @@ class ChatRoomsController < ApplicationController
 
   def create
     @chat_room = current_user.chat_rooms.build(chat_room_params)
+    @chat_room.owner_id = current_user.id
     if @chat_room.save
       flash[:success] = 'Chat room created!'
-
     else
       render 'new'
     end
-    redirect_back(fallback_location: root_path)
+    redirect_to root_path
   end
 
 
@@ -49,6 +58,24 @@ class ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
     @message = Message.new
   end
+
+  # DELETE /chat_rooms/1
+  # DELETE /chat_rooms/1.json
+  def destroy
+    @chat_room = ChatRoom.find_by(id: params[:id])
+    if current_user.id != @chat_room.owner_id
+      flash[:failure] = "Cannot delete chat room, you are not the owner."
+      redirect_back(fallback_location: root_path)
+    else
+      @chat_room.destroy
+      flash[:notice] = "Destroyed Chat Room."
+      redirect_back(fallback_location: root_path)
+    end
+
+
+  end
+
+
 
   private
 

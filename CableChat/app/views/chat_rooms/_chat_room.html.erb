@@ -1,6 +1,16 @@
-<li><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></li>
+<%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room), class: "btn btn-xs btn-success" %>
 <% if current_user.chat_rooms.include?(chat_room) %>
-  <%= link_to "Unsubscribe", unsubscribe_path(id: chat_room.id) %>
+  <%= link_to "Unsubscribe", unsubscribe_path(id: chat_room.id), class: "btn btn-xs btn-warning"  %>
+  <br />
+  <br />
 <% else %>
-  <%= link_to "Subscribe", subscribe_path(id: chat_room.id) %>
+  <%= link_to "Subscribe", subscribe_path(id: chat_room.id),  class: "btn btn-xs btn-primary" %>
+  <br />
+  <br />
+<% end %>
+
+<% if chat_room.owner_id == current_user.id %>
+  <%= link_to "Delete", deletechat_path(id: chat_room.id),  method: :delete, class: "btn btn-xs btn-danger" %>
+  <br />
+  <br />
 <% end %>

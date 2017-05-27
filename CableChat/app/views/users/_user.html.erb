@@ -7,22 +7,29 @@
       </div>
       <div class="col-md-11">
         <p class="card-text">
-          <li>
-            <%= user.id  %>
-          </li>
-          <li>
-            <%= user.email  %>
-          </li>
-          <li>
+
+
+            <%= "User #: " + user.id.to_s + "  "  %>
+
+            <% if user.display_name == nil %>
+              <%= "Missing Display Name"  %>
+            <% else %>
+              <%= user.display_name  %>
+            <% end %>
+
+
 
 
             <% if current_user.friendships.find_by(friend_id: user.id) != nil %>
-              <%= link_to 'Remove', friendship_path(current_user.friendships.find_by(friend_id: user.id)), method: :delete %>
+              <%= link_to 'Remove', friendship_path(current_user.friendships.find_by(friend_id: user.id)), method: :delete, class: "btn btn-xs btn-danger" %>
+              <br />
+              <br />
             <% else %>
-              <%= link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post %>
+              <%= link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post,  class: "btn btn-xs btn-primary" %>
+              <br />
+              <br />
             <% end %>
 
-          </li>
 
 
 

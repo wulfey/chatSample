@@ -33,14 +33,15 @@
       <% end %>
 
       <span>
-         <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+         <span style="font-size:30px; cursor:pointer" onclick="openNav()">&#9776;</span>
+         <span style="javascript:void(0); cursor:pointer" class="closebtn" onclick="closeNav()">&times;</span>
       </span>
 
       <%= yield %>
 
 
       <div id="mySidenav" class="sidenav">
-        <span style="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
+        <span style="javascript:void(0); cursor:pointer" class="closebtn" onclick="closeNav()">&times;</span>
         <% if current_user %>
             <a href="#"><%= link_to ('<i class="fa fa-cog"></i> Chats').html_safe, root_path, class: 'btn btn-xs btn-danger', title: 'Home' %></a>
             <a href="#"><%= link_to ('<i class="fa fa-user"></i> Edit Profile').html_safe, edit_user_registration_path, class: 'btn btn-xs btn-danger', title: 'Edit Profile' %></a>
