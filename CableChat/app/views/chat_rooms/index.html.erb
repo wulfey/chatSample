@@ -1,19 +1,19 @@
 
 
 
-<p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
+<p class="lead" style="margin-bottom: 80x"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
 
 <!--  giant container for left and right-->
-<div class="container">
+<div class="fluid-container" >
 
   <!-- left, chats to join -->
-  <div class="col-sm-4">
-    <h2>Chat rooms</h2>
+  <div class="col-md-3">
+    <h2 style="navbar-top-fixed">Chat rooms</h2>
     <%= render @chat_rooms %>
   </div>
 
   <!-- right, feed -->
-  <div class="col-sm-8">
+  <div class="col-sm-6">
     <h2>Feed</h2>
     <% @messages.reverse.each do |message| %>
 
@@ -41,4 +41,15 @@
 
 
   </div>
+
+  <div class="col-sm-3">
+    <h1>Online Friends (all users)</h1>
+
+    <% OnlineUser.find_each do |user| %>
+      <li>
+        <%= User.find(user.user_id).display_name %>
+      </li>
+    <% end %>
+  </div>
+
 </div>

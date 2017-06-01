@@ -7,8 +7,18 @@ class ChatRoomsController < ApplicationController
         mes << message
       end
     end
-
     @messages = mes.sort {|a,b| a.created_at <=> b.created_at}
+
+    # this does not work, user signed in just checks if ANY 1 user is isgned in
+    # @online_friends = []
+    # current_user.friendships.each do |f|
+    #   u = User.find(f.friend_id)
+    #   if u.user_signed_in?
+    #     @online_friends << u
+    #   end
+    # end
+
+
 
   end
 
